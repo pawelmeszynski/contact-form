@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreRequest;
 use App\Models\Email;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class PageController extends Controller
 {
@@ -13,17 +12,17 @@ class PageController extends Controller
         return view('index');
     }
 
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
         $data = $request->except('_token');
 
-        if(!Email::where('email', $data['email'])->exists()) {
+        if (!Email::where('email', $data['email'])->exists()) {
             Email::create([
                 'email' => $data['email'],
             ]);
         }
 
-        return redirect()->route('lista');
+        return redirect()->route('list');
     }
 
     public function list()

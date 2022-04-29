@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Your Website</title>
@@ -8,9 +8,13 @@
     </head>
     <body>
         <h1>Test</h1>
-        <form action="{{ route('zapisz') }}" method="POST">
+        <form action="{{ route('store') }}" method="POST">
             @csrf
-            <input type="email" name="email">
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email">
+            @error('email')
+                <p>{{ $message }}</p>
+            @enderror
             <button type="submit">Zatwierdz</button>
         </form>
 

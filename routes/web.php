@@ -1,11 +1,9 @@
 <?php
 
 use App\Http\Controllers\PageController;
-use App\Models\User;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [PageController::class, 'index'])->name('stronaglowna');
-Route::post('/zapisz', [PageController::class, 'store'])->name('zapisz');
+Route::get('/', [PageController::class, 'index'])->name('front-page');
+Route::post('/store', [PageController::class, 'store'])->name('store');
 
-Route::get('/list', [PageController::class, 'list'])->name('lista');
+Route::get('/list', [PageController::class, 'list'])->name('list');
