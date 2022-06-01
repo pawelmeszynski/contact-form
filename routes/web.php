@@ -1,9 +1,9 @@
 <?php
 
+use App\Http\Controllers\EmailsController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [PageController::class, 'index'])->name('front-page');
-Route::post('/store', [PageController::class, 'store'])->name('store');
+Route::get('/', PageController::class)->name('front-page');
 
-Route::get('/list', [PageController::class, 'list'])->name('list');
+Route::resource('emails', EmailsController::class)->except('show');
