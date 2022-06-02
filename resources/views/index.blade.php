@@ -9,7 +9,7 @@
     <body>
         <div class="container my-20">
             @include('partials.nav')
-            <h1>Strona główna</h1>
+            <h1 class="underline decoration-sky-500 text-2xl">Welcome on our page, choose subpage that you want to check</h1>
         </div>
     </body>
 </html>

@@ -25,7 +25,7 @@ class EmailsController extends Controller
      */
     public function create(): View
     {
-        return view('emails.create'); //show create form
+        return view('emails.create'); //show create forurm
     }
 
     /**
@@ -66,7 +66,7 @@ class EmailsController extends Controller
         return back()->with([
             'status' => [
                 'status' => $result ? 'success' : 'failed',
-                'message' => $result ? 'Pomyślnie zaktualizowano email' : 'Nie udało się zaktualizowano emaila',
+                'message' => $result ? 'Mail has been edited' : 'Something went wrong, sorry',
             ],
         ]);
     }
@@ -81,7 +81,7 @@ class EmailsController extends Controller
         return back()->with([
             'status' => [
                 'status' => $result ? 'success' : 'failed',
-                'message' => $result ? 'Pomyślnie usunięto email ' . $email->email : 'Nie udało się usunąć emaila ' . $email->email,
+                'message' => $result ? 'Email deleted ' . $email->email : 'Something went wrong, sorry ' . $email->email,
             ],
         ]);
     }

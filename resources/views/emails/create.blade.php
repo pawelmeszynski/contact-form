@@ -9,15 +9,15 @@
     <body>
         <div class="container my-20">
             @include('partials.nav')
-            <h1>Dodaj mail</h1>
+            <h1 class="font-extrabold text-transparent text-2xl bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 mb-3" >Add email below</h1>
             <form action="{{ route('emails.store') }}" method="POST">
                 @csrf
-                <label for="email">E-mail:</label>
-                <input type="email" id="email" name="email">
+                <label class="text-2xl" for="email">E-mail:</label>
+                <input class="border-2 border-solid border-emerald-700 " type="email" id="email" name="email" placeholder="test@test.com">
                 @error('email')
                     <p>{{ $message }}</p>
                 @enderror
-                <button type="submit">Zatwierdz</button>
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" type="submit">Confirm</button>
             </form>
         </div>
     </body>
