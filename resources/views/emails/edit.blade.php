@@ -3,13 +3,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Your Website</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icongits.css">
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     </head>
     <body>
         <div class="container my-20">
-            @include('partials.nav')
-            @include('partials.request_status')
+                @include('partials.nav')
+                @include('partials.request_status')
             <h1 class="text-2xl text-center">YOU WANT TO EDIT:  {{ $email->email }}</h1>
             <form action="{{ route('emails.update', $email->id) }}" method="POST">
                 @csrf
@@ -20,7 +20,7 @@
                 @error('email')
                     <p> {{ $message }} </p>
                 @enderror
-                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 p-2 rounded-full"type="submit"><i class="bi bi-check2"></i></button>
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 p-2 rounded-full"type="submit">Edit</button>
             </form>
         </div>
         </div>
