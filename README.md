@@ -1,6 +1,5 @@
 # Functionality
-The home page contains a form that collects the e-mail address that the customer needs to enter. 
-A database that has only unique addresses, without repetitions, keeps the data, which are then listed.
+The page is divided into 3 subpages. Firstly add email to database, next all email's are listed. The site has been diversified with editing and deleting records from the database. 
 # Installation
 1. composer install
 2. composer update
