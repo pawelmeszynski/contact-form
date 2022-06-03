@@ -1,4 +1,4 @@
-name: contact-form
+name: stronka
 type: laravel
 docroot: public
 php_version: "8.1"

@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\Email;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -29,6 +30,6 @@ class CustomerCreated extends Mailable
     public function build()
     {
         return $this->from('noreply@sungroup.pl', 'Example')
-            ->view('emails.index');
+            ->view('emails.index',['emails' => Email::all()]);
     }
 }
