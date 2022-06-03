@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreEmailRequest;
 use App\Http\Requests\UpdateEmailRequest;
+use App\Mail\CustomerCreated;
 use App\Models\Email;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
+use Mail;
 
 class EmailsController extends Controller
 {
@@ -40,7 +42,7 @@ class EmailsController extends Controller
                 'email' => $data['email'],
             ]); //store new email in database
         }
-
+        Mail::to('p.meszynski99@gmail.com')->send(new CustomerCreated());
         return redirect()->route('emails.index'); //redirect to emails list
     }
 

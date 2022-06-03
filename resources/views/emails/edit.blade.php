@@ -17,10 +17,11 @@
         <div class="flex bg-gray-100 px-5 py-2 mb-5 mt-2 space-x-10">
                 <label class="text-xl mt-2 px-1" for="email">E-mail:</label>
                 <input class="w-96 h-10" type="email" id="email" name="email" value="{{ $email->email }}">
+                <input type="hidden" name="email_id" value="here give me id of edited email">
                 @error('email')
                     <p> {{ $message }} </p>
                 @enderror
-                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 p-2 rounded-full"type="submit">Edit</button>
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 p-2 rounded-full" type="submit">EDIT</button>
             </form>
         </div>
         </div>
