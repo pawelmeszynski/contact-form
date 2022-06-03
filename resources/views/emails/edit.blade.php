@@ -10,7 +10,7 @@
         <div class="container my-20">
                 @include('partials.nav')
                 @include('partials.request_status')
-            <h1 class="text-2xl text-center">YOU WANT TO EDIT:  {{ $email->email }}</h1>
+            <h1 class="text-2xl text-center border-2 bg-gray-100">YOU WANT TO EDIT:  {{ $email->email }}</h1>
             <form action="{{ route('emails.update', $email->id) }}" method="POST">
                 @csrf
                 @method('patch')

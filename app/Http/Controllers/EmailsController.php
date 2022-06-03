@@ -66,7 +66,7 @@ class EmailsController extends Controller
         return back()->with([
             'status' => [
                 'status' => $result ? 'success' : 'failed',
-                'message' => $result ? 'Mail has been edited' : 'Something went wrong, sorry',
+                'message' => $result ? 'Mail succesfully edited' : 'Something went wrong, sorry',
             ],
         ]);
     }
@@ -81,7 +81,7 @@ class EmailsController extends Controller
         return back()->with([
             'status' => [
                 'status' => $result ? 'success' : 'failed',
-                'message' => $result ? 'Email deleted ' . $email->email : 'Something went wrong, sorry ' . $email->email,
+                'message' => $result ? 'Email successfully deleted ' : 'Something went wrong, sorry ' . $email->email,
             ],
         ]);
     }
