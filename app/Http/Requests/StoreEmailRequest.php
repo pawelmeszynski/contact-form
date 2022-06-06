@@ -21,7 +21,7 @@ class StoreEmailRequest extends FormRequest
     {
          return [
             'email' => ['required', 'email', 'min:3', 'max:255','unique:emails,email'],
-            'avatar' => ['required','image'],
+            'avatar' => ['image'],
         ];
     }
 }

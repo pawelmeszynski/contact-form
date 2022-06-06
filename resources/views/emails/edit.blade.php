@@ -11,7 +11,7 @@
                 @include('partials.nav')
                 @include('partials.request_status')
                 <h1 class="text-2xl text-center border-2 bg-gray-100">YOU WANT TO EDIT:  {{ $email->email }}</h1>
-            <form action="{{ route('emails.update', $email->id) }}" method="POST">
+            <form action="{{ route('emails.update', $email->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('patch')
         <div class="flex bg-gray-100 px-5 py-2 mb-5 mt-2 space-x-10">

@@ -17,11 +17,12 @@
                 @error('email')
                 <p>{{ $message }}</p>
                 @enderror
-                <input class="border-2 border-solid border-emerald-700" type="file" name="avatar">
+                <label class="text-2xl" for="email">Choose avatar (optional):</label>
+                <input class="border-2 border-solid border-emerald-700" type="file" name="avatar"><br>
                 @error('avatar')
                 <p>{{ $message }}</p>
                 @enderror
-                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" type="submit">Confirm</button>
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" type="submit"><i class="bi bi-check-square-fill"></i></i>Confirm</button>
 
             </form>
         </div>

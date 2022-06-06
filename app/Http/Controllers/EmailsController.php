@@ -66,14 +66,14 @@ class EmailsController extends Controller
     /**
      * Update email.
      */
-    public function update(UpdateEmailRequest $updateEmailRequest, Email $email): RedirectResponse
+    public function update(UpdateEmailRequest $updateEmailRequest, Email $email ): RedirectResponse
     {
         $data = $updateEmailRequest->validated(); //get only validated data
 
         $result = $email->update([
             'email' => $data['email'],
-            'avatar' => $request->avatar->getClientOriginalName(),
-        ]); //update email with new data
+            'avatar' => $updateEmailRequest->avatar->getClientOriginalName(),
+        ]); //update email and avatar with new data
 
         return back()->with([
             'status' => [
@@ -95,6 +95,6 @@ class EmailsController extends Controller
                 'status' => $result ? 'success' : 'failed',
                 'message' => $result ? 'Email successfully deleted ' : 'Something went wrong, sorry ' . $email->email,
             ],
-        ]);
+        ]); //delete mail from database
     }
 }
