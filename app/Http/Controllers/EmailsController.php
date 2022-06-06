@@ -40,13 +40,12 @@ class EmailsController extends Controller
 
         $filename = $request->avatar->getClientOriginalName();
         $request->avatar->storeAs('images',$filename,'public');
-        Avatar::create([
-            'avatar' => $data['avatar'],
 
         if (!Email::where('email', $data['email'])->exists()) { //check if email isn`t exists already in database
             Email::create([
                 'email' => $data['email'],
-            ]); //store new email in database
+                'avatar' => $data['avatar'] ?? null,
+            ]); //store new email and avatar in database
         }
 
         Mail::to('test@mailhog.local')->send(new CustomerCreated());
