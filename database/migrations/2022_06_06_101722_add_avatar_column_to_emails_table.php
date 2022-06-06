@@ -13,11 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('emails', function (Blueprint $table) {
-            $table->id();
-            $table->string('email')->unique();
+        Schema::table('emails', function (Blueprint $table) {
             $table->string('avatar') -> nullable();
-            $table->timestamps();
         });
     }
 
@@ -28,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('emails');
+        Schema::table('emails', function (Blueprint $table) {
+            //
+        });
     }
 };
