@@ -24,7 +24,7 @@ class CustomerCreated extends Mailable
 
     /**
      * Build the message.
-     *
+     *git
      * @return $this
      */
     public function build()

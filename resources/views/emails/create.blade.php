@@ -13,7 +13,7 @@
             <form action="{{ route('emails.store') }}" method="POST">
                 @csrf
                 <label class="text-2xl" for="email">E-mail:</label>
-                <input class="border-2 border-solid border-emerald-700 " type="email" id="email" name="email" placeholder="test@test.com">
+                <input class="border-2 border-solid border-emerald-700 flex-col-reverse " type="email" id="email" name="email" placeholder="test@test.com">
                 @error('email')
                     <p>{{ $message }}</p>
                 @enderror
