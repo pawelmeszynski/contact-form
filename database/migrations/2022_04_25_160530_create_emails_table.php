@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('emails', function (Blueprint $table) {
             $table->id();
             $table->string('email')->unique();
-            $table->string('avatar') -> nullable();
             $table->timestamps();
         });
     }
