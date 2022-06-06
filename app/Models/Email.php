@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Str;
 
 /**
  * App\Models\Email
@@ -34,8 +35,16 @@ class Email extends Model
         'email', 'avatar'
     ];
 
-    public function getAvatarUrl()
+    public function getAvatarUrl(string $miniatureType = 'avatar')
     {
-        return asset('storage/images/' . $this->avatar);
+        if($this->avatar)
+        {
+            $fileNameWithoutExt = Str::beforeLast($this->avatar, '.');
+            $extension = Str::afterLast($this->avatar, '.');
+
+            return asset('storage/images/' . $fileNameWithoutExt . '-' . $miniatureType . '.' . $extension); 
+        }
+
+        return 'https://via.placeholder.com/512x512';
     }
 }

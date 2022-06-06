@@ -7,8 +7,11 @@ use App\Http\Requests\UpdateEmailRequest;
 use App\Mail\CustomerCreated;
 use App\Models\Email;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 use Mail;
+use Spatie\Glide\GlideImage;
 
 class EmailsController extends Controller
 {
@@ -38,7 +41,11 @@ class EmailsController extends Controller
         $data = $request->except('_token'); //get all data from request except _token
 
         $filename = $request->avatar->getClientOriginalName();
+        $fileNameWithoutExt = Str::beforeLast($filename, '.');
+        $extension = Str::afterLast($filename, '.');
         $request->avatar->storeAs('images', $filename, 'public');  // taking uploaded file to storage
+
+        GlideImage::create(Storage::disk('public')->path('images/' . $filename))->modify(['w'=> 512, 'h' => 512])->save(Storage::disk('public')->path('images/' . $fileNameWithoutExt . '-avatar.' . $extension));
 
         if (!Email::where('email', $data['email'])->exists()) { //check if email isn`t exists already in database
             Email::create([

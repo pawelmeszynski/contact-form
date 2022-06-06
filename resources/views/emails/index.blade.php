@@ -5,6 +5,7 @@
         <title>Mail list</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <script src="{{ asset('js/app.js') }}"></script>
     </head>
     <body>
         <div class="container my-20">
@@ -14,7 +15,7 @@
             <div class="flex flex-col">
                 @foreach($emails as $email)
                 <div class="flex bg-gray-100 px-5 py-2 mb-3 items-center justify-between">
-                    <img class="w-25 h-10" src="{{ $email->getAvatarUrl() }}">
+                    <img class="w-25 h-10" src="{{ $email->getAvatarUrl() }}" data-fslightbox>
                     <p class="text-xl text-pink-600 ">{{ $email->email }}</p>
                         <div class="flex gap-x-3">
                             <form action="{{ route('emails.destroy', $email->id) }}" method="POST">
@@ -28,5 +29,6 @@
                 @endforeach
             </div>
         </div>
+
     </body>
 </html>

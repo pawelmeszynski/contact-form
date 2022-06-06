@@ -1,26 +1,44 @@
 {
-    "private": true,
-    "scripts": {
-        "dev": "npm run development",
-        "development": "mix",
-        "watch": "mix watch",
-        "watch-poll": "mix watch -- --watch-options-poll=1000",
-        "hot": "mix watch --hot",
-        "prod": "npm run production",
-        "production": "mix --production"
-    },
-    "devDependencies": {
-        "autoprefixer": "^10.4.7",
-        "axios": "^0.21",
-        "laravel-mix": "^6.0.6",
-        "lodash": "^4.17.19",
-        "postcss": "^8.4.14",
-        "resolve-url-loader": "^5.0.0",
-        "sass": "^1.52.1",
-        "sass-loader": "^12.1.0",
-        "tailwindcss": "^3.0.24"
-    },
-    "dependencies": {
-        "bootstrap-icons": "^1.8.3"
-    }
+  "private": true,
+  "scripts": {
+    "dev": "npm run development",
+    "development": "mix",
+    "watch": "mix watch",
+    "watch-poll": "mix watch -- --watch-options-poll=1000",
+    "hot": "mix watch --hot",
+    "prod": "npm run production",
+    "production": "mix --production"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.7",
+    "axios": "^0.21",
+    "laravel-mix": "^6.0.6",
+    "lodash": "^4.17.19",
+    "postcss": "^8.4.14",
+    "resolve-url-loader": "^5.0.0",
+    "sass": "^1.52.1",
+    "sass-loader": "^12.1.0",
+    "tailwindcss": "^3.0.24"
+  },
+  "dependencies": {
+    "bootstrap-icons": "^1.8.3",
+    "fslightbox": "^3.3.1"
+  },
+  "name": "contact-form",
+  "description": "The page is divided into 3 subpages. Firstly add email to database, next all email's are listed. The site has been diversified with editing and deleting records from the database. \r # Installation\r 1. composer install\r 2. composer update\r 3. npm install\r 4. npm run dev\r 5. Copy .env.example to .env\r 6. php artisan key:generate\r 7. php artisan storage:link\r 8. Update .env file:\r - APP_NAME=\r - APP_URL=http://localhost\r - ASSET_URL=http://localhost\r - APP_DOMAIN=\r - MySQL Credentials\r 9. php artisan migrate:fresh --seed",
+  "version": "1.0.0",
+  "main": "tailwind.config.js",
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pawelmeszynski/contact-form.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pawelmeszynski/contact-form/issues"
+  },
+  "homepage": "https://github.com/pawelmeszynski/contact-form#readme"
 }
