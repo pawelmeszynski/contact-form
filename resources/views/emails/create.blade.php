@@ -2,8 +2,8 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>Your Website</title>
-
+        <title>Add email</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     </head>
     <body>
@@ -22,8 +22,7 @@
                 @error('avatar')
                 <p>{{ $message }}</p>
                 @enderror
-                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" type="submit"><i class="bi bi-check-square-fill"></i></i>Confirm</button>
-
+                <button class="bg-blue-500 hover:bg-blue-700 text-white text-2xl font-bold py-1 px-1 rounded-full" type="submit"><i class="bi bi-check-lg"></i></button>
             </form>
         </div>
     </body>

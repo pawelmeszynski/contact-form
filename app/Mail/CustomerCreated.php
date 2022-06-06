@@ -4,18 +4,16 @@ namespace App\Mail;
 
 use App\Models\Email;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
 class CustomerCreated extends Mailable
 {
-    use Queueable, SerializesModels;
+    use Queueable;
+    use SerializesModels;
 
     /**
      * Create a new message instance.
-     *
-     * @return void
      */
     public function __construct()
     {
@@ -30,6 +28,8 @@ class CustomerCreated extends Mailable
     public function build()
     {
         return $this->from('noreply@sungroup.pl', 'Example')
-            ->view('emails.index',['emails' => Email::all()]);
+            ->view('emails.index', [
+                'emails' => Email::all()
+            ]);
     }
 }

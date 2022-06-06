@@ -31,7 +31,7 @@ class Email extends Model
     use HasFactory;
 
     protected $fillable = [
-        'email','avatar'
+        'email', 'avatar'
     ];
 
     public function getAvatarUrl()

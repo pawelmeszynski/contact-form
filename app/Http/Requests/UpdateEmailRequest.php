@@ -17,11 +17,11 @@ class UpdateEmailRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      */
-    public function rules() : array
+    public function rules(): array
     {
         return [
-            'email' => ['required', 'email', 'min:3', 'max:255','unique:emails,email,' . $this->route('email')->id],
-            'avatar' => ['image'],
+            'email' => ['required', 'email', 'min:3', 'max:255', 'unique:emails,email,' . $this->route('email')->id],
+            'avatar' => ['required', 'image'],
         ];
     }
 }

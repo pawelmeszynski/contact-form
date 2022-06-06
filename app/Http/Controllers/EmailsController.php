@@ -6,7 +6,6 @@ use App\Http\Requests\StoreEmailRequest;
 use App\Http\Requests\UpdateEmailRequest;
 use App\Mail\CustomerCreated;
 use App\Models\Email;
-use Hash;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Mail;
@@ -39,8 +38,7 @@ class EmailsController extends Controller
         $data = $request->except('_token'); //get all data from request except _token
 
         $filename = $request->avatar->getClientOriginalName();
-        $request->avatar->storeAs('images',$filename,'public');
-
+        $request->avatar->storeAs('images', $filename, 'public');  // taking uploaded file to storage
 
         if (!Email::where('email', $data['email'])->exists()) { //check if email isn`t exists already in database
             Email::create([
@@ -66,7 +64,7 @@ class EmailsController extends Controller
     /**
      * Update email.
      */
-    public function update(UpdateEmailRequest $updateEmailRequest, Email $email ): RedirectResponse
+    public function update(UpdateEmailRequest $updateEmailRequest, Email $email): RedirectResponse
     {
         $data = $updateEmailRequest->validated(); //get only validated data
 
