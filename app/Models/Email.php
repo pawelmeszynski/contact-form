@@ -31,6 +31,11 @@ class Email extends Model
     use HasFactory;
 
     protected $fillable = [
-        'email','image'
+        'email','avatar'
     ];
+
+    public function getAvatarUrl()
+    {
+        return asset('storage/images/' . $this->avatar);
+    }
 }

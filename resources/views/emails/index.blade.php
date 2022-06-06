@@ -14,6 +14,7 @@
             <div class="flex flex-col">
                 @foreach($emails as $email)
                     <div class="flex bg-gray-100 px-5 py-2 mb-3 items-center justify-between">
+                        <img class="w-25 h-10" src="{{ $email->getAvatarUrl() }}">
                         <p class="text-xl text-pink-600 ">{{ $email->email }}</p>
                         <div class="flex gap-x-3">
                             <form action="{{ route('emails.destroy', $email->id) }}" method="POST">

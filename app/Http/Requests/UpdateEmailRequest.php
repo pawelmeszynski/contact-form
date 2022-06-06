@@ -21,6 +21,7 @@ class UpdateEmailRequest extends FormRequest
     {
         return [
             'email' => ['required', 'email', 'min:3', 'max:255','unique:emails,email,' . $this->route('email')->id],
+            'avatar' => ['required','image'],
         ];
     }
 }

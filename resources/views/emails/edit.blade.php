@@ -10,7 +10,7 @@
         <div class="container my-20">
                 @include('partials.nav')
                 @include('partials.request_status')
-            <h1 class="text-2xl text-center border-2 bg-gray-100">YOU WANT TO EDIT:  {{ $email->email }}</h1>
+                <h1 class="text-2xl text-center border-2 bg-gray-100">YOU WANT TO EDIT:  {{ $email->email }}</h1>
             <form action="{{ route('emails.update', $email->id) }}" method="POST">
                 @csrf
                 @method('patch')
@@ -20,6 +20,11 @@
                 <input type="hidden" name="email_id" value="here give me id of edited email">
                 @error('email')
                     <p> {{ $message }} </p>
+                @enderror
+                <input class="border-2 border-solid border-emerald-700" type="file" name="avatar">
+                <img class="w-25 h-10" src="{{ $email->getAvatarUrl() }}">
+                @error('avatar')
+                    <p>{{ $message }}</p>
                 @enderror
                 <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 p-2 rounded-full" type="submit">EDIT</button>
             </form>

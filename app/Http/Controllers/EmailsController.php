@@ -41,10 +41,11 @@ class EmailsController extends Controller
         $filename = $request->avatar->getClientOriginalName();
         $request->avatar->storeAs('images',$filename,'public');
 
+
         if (!Email::where('email', $data['email'])->exists()) { //check if email isn`t exists already in database
             Email::create([
                 'email' => $data['email'],
-                'avatar' => $data['avatar'] ?? null,
+                'avatar' => $request->avatar->getClientOriginalName(),
             ]); //store new email and avatar in database
         }
 
@@ -69,7 +70,10 @@ class EmailsController extends Controller
     {
         $data = $updateEmailRequest->validated(); //get only validated data
 
-        $result = $email->update($data); //update email with new data
+        $result = $email->update([
+            'email' => $data['email'],
+            'avatar' => $request->avatar->getClientOriginalName(),
+        ]); //update email with new data
 
         return back()->with([
             'status' => [
