@@ -35,14 +35,14 @@ class Email extends Model
         'email', 'avatar'
     ];
 
-    public function getAvatarUrl(string $miniatureType = 'avatar')
+    public function getAvatarUrl(string $miniatureType = null)
     {
         if($this->avatar)
         {
             $fileNameWithoutExt = Str::beforeLast($this->avatar, '.');
             $extension = Str::afterLast($this->avatar, '.');
 
-            return asset('storage/images/' . $fileNameWithoutExt . '-' . $miniatureType . '.' . $extension); 
+            return asset('storage/images/' . $fileNameWithoutExt . ($miniatureType ? '-' . $miniatureType : '') . '.' . $extension);
         }
 
         return 'https://via.placeholder.com/512x512';

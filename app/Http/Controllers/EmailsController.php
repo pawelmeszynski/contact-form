@@ -40,12 +40,14 @@ class EmailsController extends Controller
     {
         $data = $request->except('_token'); //get all data from request except _token
 
-        $filename = $request->avatar->getClientOriginalName();
-        $fileNameWithoutExt = Str::beforeLast($filename, '.');
-        $extension = Str::afterLast($filename, '.');
-        $request->avatar->storeAs('images', $filename, 'public');  // taking uploaded file to storage
+        $filename = $request->avatar->getClientOriginalName(); //get uploaded filename
+        $fileNameWithoutExt = Str::beforeLast($filename, '.'); //get file name without extenstion
+        $extension = Str::afterLast($filename, '.'); //get file extension
+        $request->avatar->storeAs('images', $filename, 'public');  // save uploaded file in "images" directory on /storage/app/public/
 
-        GlideImage::create(Storage::disk('public')->path('images/' . $filename))->modify(['w'=> 512, 'h' => 512])->save(Storage::disk('public')->path('images/' . $fileNameWithoutExt . '-avatar.' . $extension));
+        GlideImage::create(Storage::disk('public')->path('images/' . $filename))
+            ->modify(['w'=> 512, 'h' => 512]) //crop image
+            ->save(Storage::disk('public')->path('images/' . $fileNameWithoutExt . '-avatar.' . $extension)); //save on disk
 
         if (!Email::where('email', $data['email'])->exists()) { //check if email isn`t exists already in database
             Email::create([
