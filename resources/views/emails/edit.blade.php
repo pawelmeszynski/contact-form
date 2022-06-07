@@ -5,6 +5,7 @@
         <title>Mail editor</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icongits.css">
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/popup.css') }}">
     </head>
     <body>
         <div class="container my-20">
@@ -22,7 +23,9 @@
                     <p> {{ $message }} </p>
                     @enderror
                     <input class="border-2 border-solid border-emerald-700" type="file" name="avatar">
-                    <img class="w-25 h-10" src="{{ $email->getAvatarUrl() }}">
+                    <a class="image-popup" href="{{ $email->getAvatarUrl() }}">
+                        <img src="{{ $email->getAvatarUrl('avatar') }}">
+                    </a>
                     @error('avatar')
                     <p>{{ $message }}</p>
                     @enderror

@@ -37,14 +37,13 @@ class Email extends Model
 
     public function getAvatarUrl(string $miniatureType = null)
     {
-        if($this->avatar)
-        {
+        if ($this->avatar) {
             $fileNameWithoutExt = Str::beforeLast($this->avatar, '.');
             $extension = Str::afterLast($this->avatar, '.');
 
             return asset('storage/images/' . $fileNameWithoutExt . ($miniatureType ? '-' . $miniatureType : '') . '.' . $extension);
         }
 
-        return 'https://via.placeholder.com/512x512';
+        return 'https://via.placeholder.com/24';
     }
 }

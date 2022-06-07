@@ -46,7 +46,9 @@ class EmailsController extends Controller
         $request->avatar->storeAs('images', $filename, 'public');  // save uploaded file in "images" directory on /storage/app/public/
 
         GlideImage::create(Storage::disk('public')->path('images/' . $filename))
-            ->modify(['w'=> 512, 'h' => 512]) //crop image
+            ->modify([
+                'w' => 32, 'h' => 32
+            ]) //crop image
             ->save(Storage::disk('public')->path('images/' . $fileNameWithoutExt . '-avatar.' . $extension)); //save on disk
 
         if (!Email::where('email', $data['email'])->exists()) { //check if email isn`t exists already in database
@@ -76,7 +78,16 @@ class EmailsController extends Controller
     public function update(UpdateEmailRequest $updateEmailRequest, Email $email): RedirectResponse
     {
         $data = $updateEmailRequest->validated(); //get only validated data
+        $filename = $updateEmailRequest->avatar->getClientOriginalName(); //get uploaded filename
+        $fileNameWithoutExt = Str::beforeLast($filename, '.'); //get file name without extenstion
+        $extension = Str::afterLast($filename, '.'); //get file extension
+        $updateEmailRequest->avatar->storeAs('images', $filename, 'public');  // save uploaded file in "images" directory on /storage/app/public/
 
+        GlideImage::create(Storage::disk('public')->path('images/' . $filename))
+            ->modify([
+                'w' => 48, 'h' => 48
+            ]) //crop image
+            ->save(Storage::disk('public')->path('images/' . $fileNameWithoutExt . '-avatar.' . $extension)); //save on disk
         $result = $email->update([
             'email' => $data['email'],
             'avatar' => $updateEmailRequest->avatar->getClientOriginalName(),
