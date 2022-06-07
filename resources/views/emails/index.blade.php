@@ -45,7 +45,7 @@
                 mainClass: 'mfp-with-zoom', // this class is for CSS animation below
                 zoom: {
                     enabled: true, // By default it's false, so don't forget to enable it
-                    duration: 1500, // duration of the effect, in milliseconds
+                    duration: 1000, // duration of the effect, in milliseconds
                     easing: 'ease-in-out', // CSS transition easing function
                     opener: function(openerElement) {
                         // openerElement is the element on which popup was initialized, in this case its <a> tag

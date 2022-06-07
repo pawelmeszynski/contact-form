@@ -115,4 +115,16 @@ class EmailsController extends Controller
             ],
         ]); //delete mail from database
     }
+    /**
+     * Move email to trash.
+     */
+    public function trashed(Email $email): RedirectResponse
+    {
+        $result = $email->delete();
+
+        if ($email->trashed()) {
+            return redirect()->route('emails.trash');
+
+        }
+    }
 }
