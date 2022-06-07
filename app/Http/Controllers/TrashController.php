@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Email;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class TrashController extends Controller
@@ -18,6 +16,7 @@ class TrashController extends Controller
             'emails' => Email::onlyTrashed()->get(),
         ]); //show trashed emails list
     }
+
     /**
      * Remove email from database.
      */
@@ -27,6 +26,7 @@ class TrashController extends Controller
 
         return back(); //delete mail from database
     }
+
     /**
      * Restore emails.
      */

@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
-use Illuminate\Database\Eloquent\SoftDelete;
 
 /**
  * App\Models\Email
@@ -31,7 +30,8 @@ use Illuminate\Database\Eloquent\SoftDelete;
  */
 class Email extends Model
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory;
+    use SoftDeletes;
 
     protected $fillable = [
         'email', 'avatar'
@@ -48,7 +48,6 @@ class Email extends Model
 
         return 'https://via.placeholder.com/24';
     }
-
 }
 class Flight extends Model
 {

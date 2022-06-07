@@ -115,5 +115,4 @@ class EmailsController extends Controller
             ],
         ]); //delete mail from database
     }
-
 }
