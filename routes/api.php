@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\EmailsController;
+use App\Http\Controllers\Api\TrashController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,3 +20,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::apiresource('emails', EmailsController::class)->except('show');
+
+Route::get('/emails/trash', [TrashController::class, 'index'])->name('trash.index');
+
+Route::get('emails/restore/one/{id}', [TrashController::class, 'restore'])->name('trash.restore');
+
+Route::delete('users/{id}', [TrashController::class, 'destroy'])->name('trash.destroy');
