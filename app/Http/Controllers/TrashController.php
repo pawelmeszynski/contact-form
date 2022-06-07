@@ -5,19 +5,35 @@ namespace App\Http\Controllers;
 use App\Models\Email;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class TrashController extends Controller
 {
     /**
-     * Move email to trash.
+     * Display list of all emails.
      */
-    public function trashed(Email $email): RedirectResponse
+    public function index(): View
     {
-        $result = $email->delete();
+        return view('emails.trash')->with([
+            'emails' => Email::onlyTrashed()->get(),
+        ]); //show trashed emails list
+    }
+    /**
+     * Remove email from database.
+     */
+    public function delete($id)
+    {
+        Email::onlyTrashed()->forceDelete();
 
-        if ($email->trashed()) {
-            return redirect()->route('emails.trash');
+        return back(); //delete mail from database
+    }
+    /**
+     * Restore emails.
+     */
+    public function restore($id)
+    {
+        Email::withTrashed()->find($id)->restore();
 
-        }
+        return back(); //restore mail from database
     }
 }

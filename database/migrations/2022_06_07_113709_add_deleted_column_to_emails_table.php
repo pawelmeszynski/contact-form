@@ -16,8 +16,7 @@ return new class extends Migration
         Schema::table('emails', function (Blueprint $table) {
             $table->softDeletes();
         });
-
-
+    }
 
     /**
      * Reverse the migrations.
@@ -27,7 +26,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('emails', function (Blueprint $table) {
-            $table->softDeletes();
+            $table->dropSoftDeletes();
         });
     }
 };

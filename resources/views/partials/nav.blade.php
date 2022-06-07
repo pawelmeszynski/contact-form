@@ -3,5 +3,6 @@
         <li><a href="{{ route('front-page') }}">Front Page</a></li>
         <li><a href="{{ route('emails.index') }}">Mail's list</a></li>
         <li><a href="{{ route('emails.create') }}">Add email</a></li>
+        <li><a href="{{ route('trash.index') }}">Trash</a></li>
     </ul>
 </nav>

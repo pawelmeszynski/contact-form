@@ -9,4 +9,8 @@ Route::get('/', PageController::class)->name('front-page');
 
 Route::resource('emails', EmailsController::class)->except('show');
 
-Route::get('emails/trash', TrashController::class)->name('emails.trash');
+Route::get('/emails/trash', [TrashController::class, 'index'])->name('trash.index');
+
+Route::get('emails/restore/one/{id}', [TrashController::class, 'restore'])->name('trash.restore');
+
+Route::delete('users/{id}', [TrashController::class, 'delete'])->name('trash.delete');
