@@ -34,7 +34,7 @@ class Email extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'email', 'avatar'
+        'email', 'avatar',
     ];
 
     public function getAvatarUrl(string $miniatureType = null)

@@ -21,7 +21,17 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::apiresource('emails', EmailsController::class)->except('show');
 
-Route::get('/emails/trash', [TrashController::class, 'index'])->name('trash.index');
+Route::get('/emails', [EmailsController::class, 'show']);
+
+Route::get('/emails/{id}', [EmailsController::class, 'showById']);
+
+Route::put('/emailsupdate/{id}', [EmailsController::class, 'updateById']);
+
+Route::post('/emails/create', [EmailsController::class, 'create']);
+
+Route::get('/emails/trash', [TrashController::class, 'index']);
+
+//Route::get('/emails/trash', [TrashController::class, 'show'])->name('trash.show');
 
 Route::get('emails/restore/one/{id}', [TrashController::class, 'restore'])->name('trash.restore');
 
