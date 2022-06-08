@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreEmailRequest;
-use App\Http\Requests\UpdateEmailRequest;
-use App\Http\Resources\UserCollection;
+use App\Http\Resources\EmailResource;
+use App\Http\Resources\EmailsResource;
 use App\Models\Email;
 use Illuminate\Http\Request;
 
@@ -13,15 +13,12 @@ class EmailsController extends Controller
     /**
      * Display a listing of the resource.
      */
-//    public function index(): \Illuminate\Http\JsonResponse
-//    {
-//        $result = Email::all();
-//
-//        return response()->json([
-//            'status' => true,
-//            'emails' => $result
-//        ]);
-//    }
+    public function index()
+    {
+
+        return new EmailsResource(Email::paginate(2));
+
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -59,18 +56,20 @@ class EmailsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(): UserCollection
-    {
-        return  new UserCollection($email);
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function showById($id): \Illuminate\Http\JsonResponse
+    public function show($id)
     {
         $email = Email::find($id);
-        return response()->json($email);
+
+        if($email) {
+            return new EmailResource($email);
+        }
+
+        return [
+            'data' => [
+                'status' => 'failed',
+                'error' => 404,
+            ]
+        ];
     }
 
     /**
@@ -92,24 +91,6 @@ class EmailsController extends Controller
     {
         //
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
-//    public function update(updateEmailRequest $updateEmailRequest, Email $email): \Illuminate\Http\JsonResponse
-//    {
-//        $data = $updateEmailRequest->validated();
-//        $result = $email->update([
-//            'email' => $data['email']
-//        ]);
-//
-//        return response()->json([
-//            'status' => true,
-//            'message' => "Mail succesfully updated",
-//            'emails' => $result
-//        ], 200);
-//        //update email and avatar with new data
-//    }
 
     /**
      * Remove the specified resource from storage.

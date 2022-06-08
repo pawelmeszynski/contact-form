@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\EmailsResource;
 use App\Models\Email;
 use Illuminate\Http\Request;
 
@@ -11,14 +12,9 @@ class TrashController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): \Illuminate\Http\JsonResponse
+    public function index()
     {
-        $result = Email::onlyTrashed();
-
-        return response()->json([
-            'status' => true,
-            'emails' => $result
-        ]);
+        return new EmailsResource(Email::onlyTrashed()->paginate(2));
     }
 
     /**
@@ -36,22 +32,6 @@ class TrashController extends Controller
     {
         //
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-//    public function show()
-//     {
-//        $result = Email::onlyTrashed()->get();
-//        dd($result);
-//        return response()->json([
-//            'status' => true,
-//            'emails' => $result
-//        ]);
-//
-//    }
 
     /**
      * Show the form for editing the specified resource.
@@ -72,14 +52,13 @@ class TrashController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(): \Illuminate\Http\JsonResponse
+    public function destroy($id)
     {
-        $result = Email::onlyTrashed()->forceDelete();
+        $result = Email::onlyTrashed()->find($id)->forceDelete();
 
         return response()->json([
-            'status' => true,
+            'status' => $result,
             'message' => "Mail succesfully force deleted",
-            'emails' => $result
         ]);
     }
 
