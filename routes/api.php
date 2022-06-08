@@ -16,9 +16,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
 Route::apiresource('emails', EmailsController::class)->except('show');
 
 Route::get('/emails', [EmailsController::class, 'show']);
@@ -36,3 +33,4 @@ Route::get('/emails/trash', [TrashController::class, 'index']);
 Route::get('emails/restore/one/{id}', [TrashController::class, 'restore'])->name('trash.restore');
 
 Route::delete('users/{id}', [TrashController::class, 'destroy'])->name('trash.destroy');
+

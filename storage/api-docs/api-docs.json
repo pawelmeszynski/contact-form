@@ -1,0 +1,20 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "My First API",
+        "version": "0.1"
+    },
+    "paths": {
+        "/emails/create":
+            get:
+        "responses":
+            '200':
+        "description": OK,
+        "content":
+
+
+
+
+
+    }
+}

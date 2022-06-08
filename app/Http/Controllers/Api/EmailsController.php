@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers\Api;
-
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreEmailRequest;
 use App\Http\Requests\UpdateEmailRequest;
+use App\Http\Resources\UserCollection;
 use App\Models\Email;
 use Illuminate\Http\Request;
 
@@ -59,10 +59,9 @@ class EmailsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(): \Illuminate\Http\JsonResponse
+    public function show(): UserCollection
     {
-        $email = Email::all();
-        return response()->json($email);
+        return  new UserCollection($email);
     }
 
     /**
