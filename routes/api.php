@@ -1,18 +1,22 @@
 <?php
 
+use App\Http\Controllers\Api\AuthApiController;
 use App\Http\Controllers\Api\EmailsController;
 use App\Http\Controllers\Api\TrashController;
-use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+
+
+Route::post('register', [AuthApiController::class, 'register']);
+Route::post('login', [AuthApiController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group(function() {
-    Route::get('/user', [AuthController::class, 'user']);
-    Route::post('logout', [\App\Http\Controllers\AuthController::class, 'logout']);
+    Route::post('logout', [AuthApiController::class, 'logout']);
+    Route::get('user', function (Request $request) {
+        return $request->user();
+    });
 });
-
-Route::post('/register', [AuthController::class, 'register']);
-
-Route::post('/login', [AuthController::class, 'login']);
 
 Route::apiresource('emails', EmailsController::class)->except('show');
 
