@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreEmailRequest;
+use App\Http\Resources\EmailCollection;
 use App\Http\Resources\EmailResource;
-use App\Http\Resources\EmailsResource;
+use App\Http\Resources\EmailsCollection;
 use App\Models\Email;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,7 @@ class EmailsController extends Controller
     public function index()
     {
 
-        return new EmailsResource(Email::paginate(2));
+        return new EmailsCollection(Email::paginate(2));
 
     }
 

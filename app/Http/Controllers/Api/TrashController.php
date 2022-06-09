@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\EmailsResource;
 use App\Models\Email;
+use App\Http\Resources\EmailsCollection;
 use Illuminate\Http\Request;
 
 class TrashController extends Controller
@@ -14,7 +15,7 @@ class TrashController extends Controller
      */
     public function index()
     {
-        return new EmailsResource(Email::onlyTrashed()->paginate(2));
+        return new EmailsCollection(Email::onlyTrashed()->paginate(2));
     }
 
     /**
