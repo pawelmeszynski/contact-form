@@ -48,7 +48,13 @@ class Email extends Model
 
         return 'https://via.placeholder.com/48';
     }
+
+    public function province()
+    {
+        return $this->hasOne(Email::class);
+    }
 }
+
 class Flight extends Model
 {
     use SoftDeletes;

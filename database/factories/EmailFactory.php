@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Province;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,6 +19,7 @@ class EmailFactory extends Factory
     {
         return [
             'email' => $this->faker->unique()->safeEmail(),
+            'province_id' => Province::inRandomOrder()->limit(1)->first()->id
         ];
     }
 }

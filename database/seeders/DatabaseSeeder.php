@@ -15,8 +15,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-         User::factory(10)->create();
+        $this->call([
+            ProvinceSeeder::class,
+        ]);
+        User::factory(10)->create();
 
-         Email::factory(10)->create();
+        Email::factory(10)->create();
+
+
     }
 }
