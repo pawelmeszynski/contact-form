@@ -22,29 +22,17 @@ class EmailsController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create(Request $request): \Illuminate\Http\JsonResponse
-    {
-        $email = new Email();
-
-        $email->Email = $request->input('email');
-
-        $email->save();
-        return response()->json($email);
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      */
-    public function store(storeEmailRequest $request): \Illuminate\Http\JsonResponse
+    public function store(StoreEmailRequest $request): \Illuminate\Http\JsonResponse
     {
         $data = $request->except('_token');
         $result = Email::create([
             'email' => $data['email'],
             'avatar' => $request->avatar->getClientOriginalName(),
+            'province_id' => $data['province_id'],
         ]);
 
         return response()->json([
@@ -76,21 +64,14 @@ class EmailsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function updateById(Request $request, $id): \Illuminate\Http\JsonResponse
+    public function update(Request $request, $id): \Illuminate\Http\JsonResponse
     {
         $email = Email::find($id);
-        $email->Email = $request->input('email');
+        $email->email = $request->input('email');
+        $email->province_id = $request->input('province_id');
 
         $email->save();
         return response()->json($email);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Email $email): \Illuminate\Http\Response
-    {
-        //
     }
 
     /**

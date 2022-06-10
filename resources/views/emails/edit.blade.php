@@ -29,6 +29,15 @@
             @error('avatar')
             <p>{{ $message }}</p>
             @enderror
+            <label>Choose province</label>
+            <select name="province_id">
+                @foreach($provinces as $province)
+                    <option value="{{ $province->id }}" {{ $email->province_id == $province->id ? 'selected' : '' }}>{{ $province->name }}</option>
+                @endforeach
+            </select>
+            @error('province_id')
+            <p>{{ $message }}</p>
+            @enderror
             <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 p-2 rounded-full" type="submit">
                 EDIT
             </button>

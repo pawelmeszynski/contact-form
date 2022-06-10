@@ -22,9 +22,9 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::delete('/emails/{id}', [EmailsController::class, 'destroy']);
 
-    Route::put('/emails/{id}/update', [EmailsController::class, 'updateById']);
+    Route::put('/emails/{id}/update', [EmailsController::class, 'update']);
 
-    Route::post('/emails/create', [EmailsController::class, 'create']);
+    Route::post('/emails/store', [EmailsController::class, 'store']);
 
     Route::get('/trash', [TrashController::class, 'index']);
 

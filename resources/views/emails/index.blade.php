@@ -24,7 +24,7 @@
                         <a class="image-popup" href="{{ $email->getAvatarUrl() }}">
                             <img src="{{ $email->getAvatarUrl('avatar') }}">
                         </a>
-                        <p class="text-xl text-pink-600 ">{{ $email->email }}</p>
+                        <p class="text-xl text-pink-600 ">{{ $email->email }} - {{ $email->province->name }}</p>
                         <div class="flex gap-x-3">
                             <form action="{{ route('emails.destroy', $email->id) }}" method="POST">
                                 @csrf

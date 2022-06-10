@@ -23,7 +23,6 @@ class EmailsController extends Controller
     {
         return view('emails.index')->with([
             'emails' => Email::all(),
-            'provinces' => Email::all()
         ]); //show emails list
     }
 
@@ -32,7 +31,9 @@ class EmailsController extends Controller
      */
     public function create(): View
     {
-        return view('emails.create'); //show create form
+        return view('emails.create')->with([
+            'provinces' => Province::all(),
+        ]); //show create form
     }
 
     /**
@@ -57,10 +58,11 @@ class EmailsController extends Controller
             Email::create([
                 'email' => $data['email'],
                 'avatar' => $request->avatar->getClientOriginalName(),
+                'province_id' => $data['province_id'],
             ]); //store new email and avatar in database
         }
 
-        Mail::to('test@mailhog.local')->send(new CustomerCreated());
+//        Mail::to('test@mailhog.local')->send(new CustomerCreated());
         return redirect()->route('emails.index'); //redirect to emails list
     }
 
@@ -71,6 +73,7 @@ class EmailsController extends Controller
     {
         return view('emails.edit')->with([
             'email' => $email,
+            'provinces' => Province::all(),
         ]); //show edit form
     }
 
@@ -93,6 +96,7 @@ class EmailsController extends Controller
         $result = $email->update([
             'email' => $data['email'],
             'avatar' => $updateEmailRequest->avatar->getClientOriginalName(),
+            'province_id' => $data['province_id'],
         ]); //update email and avatar with new data
 
         return back()->with([

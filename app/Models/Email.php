@@ -34,7 +34,7 @@ class Email extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'email', 'avatar',
+        'email', 'avatar', 'province_id',
     ];
 
     public function getAvatarUrl(string $miniatureType = null)
@@ -51,7 +51,7 @@ class Email extends Model
 
     public function province()
     {
-        return $this->hasOne(Email::class);
+        return $this->hasOne(Province::class, 'id');
 
     }
 }
