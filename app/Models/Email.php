@@ -46,7 +46,7 @@ class Email extends Model
             return asset('storage/images/' . $fileNameWithoutExt . ($miniatureType ? '-' . $miniatureType : '') . '.' . $extension);
         }
 
-        return 'https://via.placeholder.com/24';
+        return 'https://via.placeholder.com/48';
     }
 }
 class Flight extends Model

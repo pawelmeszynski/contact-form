@@ -47,7 +47,7 @@ class EmailsController extends Controller
 
         GlideImage::create(Storage::disk('public')->path('images/' . $filename))
             ->modify([
-                'w' => 32, 'h' => 32
+                'w' => 48, 'h' => 48
             ]) //crop image
             ->save(Storage::disk('public')->path('images/' . $fileNameWithoutExt . '-avatar.' . $extension)); //save on disk
 

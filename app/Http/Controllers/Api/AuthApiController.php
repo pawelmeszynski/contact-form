@@ -17,7 +17,8 @@ class AuthApiController extends Controller
         return response()->json([
             'user' => $user,
             'token' => $token,
-            'token_type' => 'Bearer'
+            'token_type' => 'Bearer',
+            'expiration' => 1440
         ]);
     }
 

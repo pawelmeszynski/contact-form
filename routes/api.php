@@ -20,13 +20,15 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('/emails/{id}', [EmailsController::class, 'show']);
 
+    Route::delete('/emails/{id}', [EmailsController::class, 'destroy']);
+
     Route::put('/emails/{id}/update', [EmailsController::class, 'updateById']);
 
     Route::post('/emails/create', [EmailsController::class, 'create']);
 
     Route::get('/trash', [TrashController::class, 'index']);
 
-    Route::get('/emails/{id}/restore', [TrashController::class, 'restore'])->name('trash.restore');
+    Route::post('/trash/{id}/restore', [TrashController::class, 'restore'])->name('trash.restore');
 
-    Route::delete('emails/{id}', [TrashController::class, 'destroy'])->name('trash.destroy');
+    Route::delete('/trash/{id}', [TrashController::class, 'destroy'])->name('trash.destroy');
 });
