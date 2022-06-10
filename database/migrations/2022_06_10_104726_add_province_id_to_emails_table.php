@@ -14,7 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('emails', function (Blueprint $table) {
-            $table->foreignId('province_id')->constrained();
+            $table->unsignedBigInteger('province_id');
+            $table->foreign('province_id')->references('id')->on('provinces');
         });
     }
 
