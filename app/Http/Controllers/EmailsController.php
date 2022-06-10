@@ -6,6 +6,7 @@ use App\Http\Requests\StoreEmailRequest;
 use App\Http\Requests\UpdateEmailRequest;
 use App\Mail\CustomerCreated;
 use App\Models\Email;
+use App\Models\Province;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -22,6 +23,7 @@ class EmailsController extends Controller
     {
         return view('emails.index')->with([
             'emails' => Email::all(),
+            'provinces' => Email::all()
         ]); //show emails list
     }
 

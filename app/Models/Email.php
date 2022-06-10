@@ -52,6 +52,7 @@ class Email extends Model
     public function province()
     {
         return $this->hasOne(Email::class);
+
     }
 }
 
