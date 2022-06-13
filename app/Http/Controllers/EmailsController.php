@@ -62,7 +62,7 @@ class EmailsController extends Controller
             ]); //store new email and avatar in database
         }
 
-//        Mail::to('test@mailhog.local')->send(new CustomerCreated());
+        Mail::to('test@mailhog.local')->send(new CustomerCreated());
         return redirect()->route('emails.index'); //redirect to emails list
     }
 

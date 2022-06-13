@@ -24,8 +24,8 @@
         @error('avatar')
             <p>{{ $message }}</p>
         @enderror
-        <label>Choose province</label>
-            <select name="province_id">
+        <label class="text-2xl">Choose province</label>
+            <select class="border-2 border-solid border-emerald-700" name="province_id">
                 @foreach($provinces as $province)
                     <option value="{{ $province->id }}">{{ $province->name }}</option>
                 @endforeach

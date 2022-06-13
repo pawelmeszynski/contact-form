@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Api;
+
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreEmailRequest;
 use App\Http\Resources\EmailCollection;
@@ -24,7 +25,7 @@ class EmailsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      */
     public function store(StoreEmailRequest $request): \Illuminate\Http\JsonResponse
     {
@@ -49,7 +50,7 @@ class EmailsController extends Controller
     {
         $email = Email::find($id);
 
-        if($email) {
+        if ($email) {
             return new EmailResource($email);
         }
 

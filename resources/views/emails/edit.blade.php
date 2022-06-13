@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Mail editor</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icongits.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/popup.css') }}">
 </head>
@@ -22,15 +22,15 @@
             @error('email')
             <p> {{ $message }} </p>
             @enderror
-            <input class="border-2 border-solid border-emerald-700" type="file" name="avatar">
+            <input class="border-2 border-solid border-emerald-700" type="file" name="avatar" required>
             <a class="image-popup" href="{{ $email->getAvatarUrl() }}">
                 <img src="{{ $email->getAvatarUrl('avatar') }}" alt="avatar">
             </a>
             @error('avatar')
             <p>{{ $message }}</p>
             @enderror
-            <label>Choose province</label>
-            <select name="province_id">
+            <label class="text-xl mt-2 px-1">Choose province</label>
+            <select class="border-2 border-solid border-emerald-700" name="province_id">
                 @foreach($provinces as $province)
                     <option value="{{ $province->id }}" {{ $email->province_id == $province->id ? 'selected' : '' }}>{{ $province->name }}</option>
                 @endforeach

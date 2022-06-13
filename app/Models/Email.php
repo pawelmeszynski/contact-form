@@ -51,8 +51,7 @@ class Email extends Model
 
     public function province()
     {
-        return $this->hasOne(Province::class, 'id');
-
+        return $this->hasOne(Province::class, 'id', 'province_id');
     }
 }
 
